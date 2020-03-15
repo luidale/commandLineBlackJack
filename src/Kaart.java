@@ -9,7 +9,7 @@ public class Kaart {
     public Kaart(String mast, String suurus, int[] väärtused) {
         this.mast = mast;
         this.suurus = suurus;
-        this.väärtused = väärtused
+        this.väärtused = väärtused;
     }
 
     public String getMast() {
@@ -22,6 +22,6 @@ public class Kaart {
 
     @Override
     public String toString() {
-        return mast + "-" suurus;
+        return mast + "-" + suurus;
     }
 }
