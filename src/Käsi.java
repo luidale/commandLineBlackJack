@@ -1,12 +1,13 @@
 public class Käsi {
-    private Kaart kaardid;
+    private Kaart[] kaardid;
 
-    public Käsi(Kaart kaardid) {
+    public Käsi(Kaart[] kaardid) {
         this.kaardid = kaardid;
     }
 
-    public Kaart getKaardid() {
+    public Kaart[] getKaardid() {
         return kaardid;
     }
+
 
 }
