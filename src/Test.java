@@ -12,5 +12,13 @@ public class Test {
         // Simuleeri kaardi jagamist
         System.out.println("Jagatav kaart: " + kaardipakk.jagaKaart().lahtiselt());
         System.out.println("Kaardipakk pärast kaardi jagamist: " + kaardipakk);
+
+        //Kaardi lisamine
+        Käsi kasi = new Käsi();
+        System.out.println("Lisatud kaart on " + kasi.lisaKaart(kaardipakk).lahtiselt());
+
+
+
+
     }
 }
