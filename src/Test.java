@@ -3,13 +3,14 @@ public class Test {
 
         // Loo kaardipakk
         Pakk kaardipakk = new Pakk();
-        System.out.println(kaardipakk);
+        System.out.println("Segamata kaardipakk: " + kaardipakk);
+
         // Sega kaardi pakk
         kaardipakk.sega();
-        System.out.println(kaardipakk);
+        System.out.println("Segatud kaardipakk: " + kaardipakk);
 
         // Simuleeri kaardi jagamist
-        System.out.println(kaardipakk.jagaKaart());
-        System.out.println(kaardipakk);
+        System.out.println("Jagatav kaart: " + kaardipakk.jagaKaart().lahtiselt());
+        System.out.println("Kaardipakk pärast kaardi jagamist: " + kaardipakk);
     }
 }

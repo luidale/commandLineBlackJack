@@ -5,6 +5,7 @@ public class Kaart {
     private String mast;
     private String suurus;
     private int[] väärtused;
+    private boolean pööratud = false;
 
     public Kaart(String mast, String suurus, int[] väärtused) {
         this.mast = mast;
@@ -20,8 +21,29 @@ public class Kaart {
         return suurus;
     }
 
+    public boolean isPööratud() {
+        return pööratud;
+    }
+
+    public int[] getVäärtused() {
+        return väärtused;
+    }
+
+    public void avaKaart() {
+        // pöörab kaardi ringi
+        this.pööratud = pööratud;
+    }
+
+    public String lahtiselt(){
+        return mast + "-" + suurus;
+    }
+
     @Override
     public String toString() {
-        return mast + "-" + suurus;
+        if (pööratud) {
+            return mast + "-" + suurus;
+        } else {
+            return "XXX";
+        }
     }
 }

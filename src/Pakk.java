@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Pakk {
     private ArrayList<Kaart> kaardid;
@@ -49,8 +50,11 @@ public class Pakk {
 
     @Override
     public String toString() {
-        return "Pakk{" +
-                "kaardid=" + kaardid +
-                '}';
+        //String result = "";
+        List<String> result = new ArrayList<>();
+        for (int i = 0; i< kaardid.size();i++){
+            result.add(kaardid.get(i).lahtiselt());
+        }
+        return String.join(", ",result);
     }
 }
