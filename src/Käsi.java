@@ -1,31 +1,51 @@
 import java.util.ArrayList;
 
 public class Käsi {
-    private ArrayList<Kaart> kaardipaar;
+    private ArrayList<Kaart> kaardid;
 
     public Käsi() {
-        kaardipaar = new ArrayList<>();
+        kaardid = new ArrayList<>();
     }
 
-    public ArrayList<Kaart> getKaardipaar() {
-        return kaardipaar;
+    public ArrayList<Kaart> getKaardid() {
+        return kaardid;
     }
 
-    public Kaart lisaKaart(Pakk pakk){
+    public ArrayList<Kaart> lisaKaart(Pakk pakk){
         Kaart uuskaart = pakk.jagaKaart();
-        return uuskaart;
+        kaardid.add(uuskaart);
+        return kaardid;
     }
 
-    public int summa(ArrayList<Pakk> kaardid){
+    public int summa(){
         int summa = 0;
-        for (int i = 0; i < kaardid.size(); i++) {
-            summa = summa + kaardid.indexOf(i);
+        for (int i = 0; i < kaardid.size(); i++){
+            Kaart kaart = kaardid.get(i);
+            String number = kaart.getSuurus();
+            if(number == "S" || number == "E" || number == "K"){
+                int arv = 10;
+                summa = summa + arv;
+            }
+            else if (number == "Ä"){
+                if(summa >= 11){
+                    int arv = 1;
+                    summa = summa + arv;
+                }
+                else{
+                    int arv = 11;
+                    summa = summa + arv;
+                }
+            }
+            else{
+                int arv = Integer.parseInt(number);
+                summa = summa + arv;
+            }
         }
         return summa;
     }
 
     @Override
     public String toString() {
-        return "kaardipaar=" + kaardipaar + '}';
+        return "kaardipaar=" + kaardid + '}';
     }
 }

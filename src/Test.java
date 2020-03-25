@@ -13,9 +13,10 @@ public class Test {
         System.out.println("Jagatav kaart: " + kaardipakk.jagaKaart().lahtiselt());
         System.out.println("Kaardipakk pärast kaardi jagamist: " + kaardipakk);
 
-        //Kaardi lisamine
+        //Kaardi lisamine ja summa leidmine
         Käsi kasi = new Käsi();
-        System.out.println("Lisatud kaart on " + kasi.lisaKaart(kaardipakk).lahtiselt());
+        kasi.lisaKaart(kaardipakk);
+        System.out.println(kasi.summa());
 
 
 
