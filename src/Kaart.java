@@ -31,7 +31,7 @@ public class Kaart {
 
     public void avaKaart() {
         // pöörab kaardi ringi
-        this.pööratud = pööratud;
+        this.pööratud = true;
     }
 
     public String lahtiselt(){
