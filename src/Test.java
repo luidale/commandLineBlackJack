@@ -28,7 +28,8 @@ public class Test {
             kaart.avaKaart();
         }
         System.out.println(kasi);
-
+        // Avatud kaardi lisamine
+        System.out.println(kasi.lisaKaartAvatud(kaardipakk));
 
 
 

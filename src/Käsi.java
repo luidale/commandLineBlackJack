@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Käsi {
     private ArrayList<Kaart> kaardid;
@@ -11,41 +12,38 @@ public class Käsi {
         return kaardid;
     }
 
-    public ArrayList<Kaart> lisaKaart(Pakk pakk){
+    public ArrayList<Kaart> lisaKaart(Pakk pakk) {
         Kaart uuskaart = pakk.jagaKaart();
         kaardid.add(uuskaart);
         return kaardid;
     }
 
-    public int summa(){
+    public int summa() {
         int summa = 0;
-        for (int i = 0; i < kaardid.size(); i++){
-            Kaart kaart = kaardid.get(i);
-            String number = kaart.getSuurus();
-            if(number == "S" || number == "E" || number == "K"){
-                int arv = 10;
-                summa = summa + arv;
-            }
-            else if (number == "Ä"){
-                if(summa >= 11){
-                    int arv = 1;
-                    summa = summa + arv;
+        for (Kaart kaart : kaardid) {
+            int[] vaartused = kaart.getVäärtused();
+            for (int i = 0; i < vaartused.length; i++) {
+                if (vaartused[i] != 1 && vaartused[i] != 11){
+                    summa += vaartused[i];
                 }
-                else{
-                    int arv = 11;
-                    summa = summa + arv;
-                }
-            }
-            else{
-                int arv = Integer.parseInt(number);
-                summa = summa + arv;
             }
         }
         return summa;
     }
 
+    public String lisaKaartAvatud(Pakk pakk){
+        String avatud = pakk.jagaKaart().lahtiselt();
+        return avatud;
+    }
+
+
+
     @Override
     public String toString() {
-        return "kaardipaar=" + kaardid + '}';
+        List<String> result = new ArrayList<>();
+        for (Kaart kaart : kaardid){
+            result.add(String.valueOf(kaart));
+        }
+        return String.join(" ", result);
     }
 }
