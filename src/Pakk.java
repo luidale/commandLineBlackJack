@@ -7,8 +7,8 @@ public class Pakk {
     public Pakk() {
         kaardid = new ArrayList<>();
         String[] mastid = {"Ri", "Ru", "Po", "Är"};
-        String[] suurused = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "S", "E", "K", "Ä"};
-        int[][] väärtused = {{2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}, {10}, {10}, {10}, {1, 11}};
+        String[] suurused = {"2","3","4","5","6","7","8","9","10","S","E","K","Ä"};
+        int[][] väärtused = {{2},{3},{4},{5},{6},{7},{8},{9},{10},{10},{10},{10},{1,11}};
 
         // Tekita kaardid
         for (String s : mastid) {
@@ -24,24 +24,24 @@ public class Pakk {
         return kaardid;
     }
 
-    public void sega() {
+    public void sega(){
         // Ajab kaardid juhuslikku järjekorda
-        for (int i = 0; i < this.kaardid.size() * 2; i++) {
+        for (int i = 0; i<this.kaardid.size()*2; i++){
             // Võta pakist juhuslik kaart
-            int juhuslikNumber1 = (int) (Math.random() * this.kaardid.size());
+            int juhuslikNumber1 = (int)(Math.random()*this.kaardid.size());
             Kaart segatavKaart = this.eemaldaKaart(juhuslikNumber1);
             // Lisa kaart juhuslikku kohta pakis
-            int juhuslikNumber2 = (int) (Math.random() * this.kaardid.size());
-            this.kaardid.add(juhuslikNumber2, segatavKaart);
+            int juhuslikNumber2 = (int)(Math.random()*this.kaardid.size());
+            this.kaardid.add(juhuslikNumber2,segatavKaart);
         }
     }
 
-    public Kaart jagaKaart() {
+    public Kaart jagaKaart(){
         // eemaldab pakist esimese kaardi
         return eemaldaKaart(0);
     }
 
-    public Kaart eemaldaKaart(int indeks) {
+    public Kaart eemaldaKaart(int indeks){
         // eemaldab kaardi antud positsioonilt
         Kaart eemaldatavKaart = this.kaardid.get(indeks);
         this.kaardid.remove(indeks);
