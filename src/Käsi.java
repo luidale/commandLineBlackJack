@@ -12,10 +12,9 @@ public class Käsi {
         return kaardid;
     }
 
-    public ArrayList<Kaart> lisaKaart(Pakk pakk) {
+    public void lisaKaart(Pakk pakk) {
         Kaart uuskaart = pakk.jagaKaart();
         kaardid.add(uuskaart);
-        return kaardid;
     }
 
     public int summa() {
