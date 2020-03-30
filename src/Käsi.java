@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,8 +13,11 @@ public class Käsi {
         return kaardid;
     }
 
-    public void lisaKaart(Pakk pakk) {
+    public void lisaKaart(Pakk pakk, boolean avatud) {
         Kaart uuskaart = pakk.jagaKaart();
+        if(avatud)
+            uuskaart.avaKaart();
+        uuskaart.lahtiselt();
         kaardid.add(uuskaart);
     }
 
@@ -21,18 +25,19 @@ public class Käsi {
         int summa = 0;
         for (Kaart kaart : kaardid) {
             int[] vaartused = kaart.getVäärtused();
-            for (int i = 0; i < vaartused.length; i++) {
-                if (vaartused[i] != 1 && vaartused[i] != 11){
+            if(!kaart.getSuurus().equals("Ä"))
+                for (int i = 0; i < vaartused.length ; i++) {
                     summa += vaartused[i];
                 }
-            }
+            if(kaart.getSuurus().equals("Ä"))
+                if(kaardid.indexOf("Ä") == kaardid.size()-1){
+                    if(summa < 11)
+                        summa += 11;
+                }
+            else
+                summa += 1;
         }
         return summa;
-    }
-
-    public String lisaKaartAvatud(Pakk pakk){
-        String avatud = pakk.jagaKaart().lahtiselt();
-        return avatud;
     }
 
 
