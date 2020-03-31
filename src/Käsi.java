@@ -22,24 +22,19 @@ public class Käsi {
 
     public int summa() {
         int summa = 0;
-        int assad = 0;
+        int ässad = 0;
         for(Kaart kaart: kaardid){
             int[] vaartused = kaart.getVäärtused();
+            summa += vaartused[0];
             String suurus = kaart.getSuurus();
-            for (int i = 0; i < vaartused.length ; i++) {
-                if(!suurus.equals("Ä"))
-                    summa += vaartused[i];
-                else
-                    assad += 1;
-            }
+            if(suurus.equals("Ä"))
+                ässad += 1;
         }
-        if(assad > 0)
-            if(summa < 11)
-                summa += 11;
-            else
-                summa += 1;
+        if(summa < 12 && ässad/2 > 0)
+            summa += 10;
         return summa;
-    }
+        }
+
 
         @Override
         public String toString () {
