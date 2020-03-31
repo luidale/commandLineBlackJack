@@ -22,19 +22,22 @@ public class Käsi {
 
     public int summa() {
         int summa = 0;
-        for (Kaart kaart : kaardid) {
+        int assad = 0;
+        for(Kaart kaart: kaardid){
             int[] vaartused = kaart.getVäärtused();
-            if(!kaart.getSuurus().equals("Ä"))
-                for (int i = 0; i < vaartused.length ; i++) {
+            String suurus = kaart.getSuurus();
+            for (int i = 0; i < vaartused.length ; i++) {
+                if(!suurus.equals("Ä"))
                     summa += vaartused[i];
-                }
-            if(kaart.getSuurus().equals("Ä"))
-                if(kaardid.lastIndexOf(kaart) == kaardid.indexOf(kaart) && summa < 11){
-                    summa += vaartused[kaardid.indexOf("Ä") + 2];
-                }
                 else
-                    summa += vaartused[kaardid.indexOf("Ä") + 1];
+                    assad += 1;
+            }
         }
+        if(assad > 0)
+            if(summa < 11)
+                summa += 11;
+            else
+                summa += 1;
         return summa;
     }
 
