@@ -13,17 +13,18 @@ public class Test {
         System.out.println("Jagatav kaart: " + kaardipakk.jagaKaart().lahtiselt());
         System.out.println("Kaardipakk pärast kaardi jagamist: " + kaardipakk);
 
-        //Kaardi lisamine ja summa leidmine
+        //Kaardi lisamine
         Käsi kasi = new Käsi();
         kasi.lisaKaart(kaardipakk, true);
         kasi.lisaKaart(kaardipakk,true);
         kasi.lisaKaart(kaardipakk,true);
-        System.out.println(kasi.summa());
+
 
         // Käe kuvamine
         System.out.println(kasi);
 
-        
+        //Summa leidmine
+        System.out.println(kasi.summa());
 
 
 

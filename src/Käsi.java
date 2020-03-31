@@ -15,9 +15,8 @@ public class Käsi {
 
     public void lisaKaart(Pakk pakk, boolean avatud) {
         Kaart uuskaart = pakk.jagaKaart();
-        if(avatud)
+        if (avatud)
             uuskaart.avaKaart();
-        uuskaart.lahtiselt();
         kaardid.add(uuskaart);
     }
 
@@ -30,24 +29,21 @@ public class Käsi {
                     summa += vaartused[i];
                 }
             if(kaart.getSuurus().equals("Ä"))
-                if(kaardid.indexOf("Ä") == kaardid.size()-1){
-                    if(summa < 11)
-                        summa += 11;
+                if(kaardid.lastIndexOf(kaart) == kaardid.indexOf(kaart) && summa < 11){
+                    summa += vaartused[kaardid.indexOf("Ä") + 2];
                 }
-            else
-                summa += 1;
+                else
+                    summa += vaartused[kaardid.indexOf("Ä") + 1];
         }
         return summa;
     }
 
-
-
-    @Override
-    public String toString() {
-        List<String> result = new ArrayList<>();
-        for (Kaart kaart : kaardid){
-            result.add(String.valueOf(kaart));
+        @Override
+        public String toString () {
+            List<String> result = new ArrayList<>();
+            for (Kaart kaart : kaardid) {
+                result.add(String.valueOf(kaart));
+            }
+            return String.join(" ", result);
         }
-        return String.join(" ", result);
     }
-}
