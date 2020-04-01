@@ -11,6 +11,7 @@ public class Peaklass {
         char vastus = 'n';
         do {
             do {
+                System.out.println("Raha: " + rahakott);
                 System.out.println("Alusta mängu? (y/n)");
                 vastus = scan.next().charAt(0);
             }
@@ -20,26 +21,45 @@ public class Peaklass {
                 return;
             }
             do {
-                System.out.println("Mis panuse peale soovid mangida");
+                //System.out.println("Raha: " + rahakott);
+                if (panus > rahakott){
+                    System.out.println("Eelnev panus oli suurem kui sul on raha. Vali uus panus!");
+                } else if (panus < 0.0){
+                    System.out.println("Panus ei saa olla väiksem kui null. Vali uus panus!");
+                } else {
+                    System.out.println("Mis panuse peale soovid mängida?");
+                }
                 panus = scan.nextDouble();
+
             }
-            while(panus < 0.0 || panus > rahakott);
+            while(panus <= 0.0 || panus > rahakott);
+            rahakott -= panus;
             Mäng mang = new Mäng();
-            mang.jooksuta();
+            double voiduKoefitsent = mang.jooksuta();
+
+            // Arvuta rahakott ümber
+            if (voiduKoefitsent > 1) {
+                System.out.println("Võitsid: " + panus*(voiduKoefitsent-1));
+                rahakott += panus * voiduKoefitsent;
             }
-            while (vastus != 'n') ;
+
+            // Tühista panus
+            panus = 0.0;
         }
+        while (rahakott > 0) ;
 
-
-        public static void reeglid () {
-            String reeglid = "EESMÄRK: Saada diileriga võrdne või rohkem arv punkte.\n" +
-                    "Kaartide väärtused:\n" +
-                    "\tÄ - 1 või 11\n" +
-                    "\tPildid - 10\n" +
-                    "\tNumbeid - number\n";
-            System.out.println(reeglid);
-        }
-
+        System.out.println("Raha sai otsa ja mäng seega läbi!");
     }
+
+    public static void reeglid () {
+        String reeglid = "EESMÄRK: Saada diileriga võrdne või rohkem arv punkte.\n" +
+                "Kaartide väärtused:\n" +
+                "\tÄ - 1 või 11\n" +
+                "\tPildid - 10\n" +
+                "\tNumbrid - number\n";
+        System.out.println(reeglid);
+    }
+
+}
 
 

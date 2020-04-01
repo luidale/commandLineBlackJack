@@ -1,31 +1,45 @@
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class Mäng {
 
 
-    public void jooksuta() throws InterruptedException {
+    public double jooksuta() throws InterruptedException {
         Käsi mangija = new Käsi();
         Käsi diiler = new Käsi();
         Pakk kaardipakk = new Pakk();
         kaardipakk.sega();
         kaartideJagamine(diiler,mangija,kaardipakk);
+
+        // Kontroll kas mängijal on bläckjack ja diileril ei saa olla BlackJack
+        if (mangija.summa()== 21){
+            if(Arrays.asList("Ä","K","E","S","10").indexOf(diiler.getKaardid().get(1).getSuurus()) == -1) {
+                System.out.println("Mängija võitis BlackJack-iga, diileril ei olnud BlackJacki!");
+                return 2.5;
+            }
+        }
+
         mängijaVoor(mangija,diiler,kaardipakk);
         if (mangija.summa() > 21){
-            System.out.println("Mängija kaotas, kuna punkte oli " + mangija.summa());
-            return;
+            System.out.println("Mängija kaotas, kuna läks lõhki " + mangija.summa() + " punktiga!");
+            return 0;
         }
             diileriVoor(mangija,diiler,kaardipakk);
             System.out.println("");
             if (diiler.summa() > 21) {
                 System.out.println("Mängija võitis! Diiler läks lõhki " + diiler.summa() + " punktiga!");
+                return 2;
             }
             else if(diiler.summa() > mangija.summa()){
                 System.out.println("Diiler võitis! \n\tDiiler: " + diiler.summa() + "\n\tMängija: " + mangija.summa());
+                return 0;
             } else if (diiler.summa() < mangija.summa()){
                 System.out.println("Mängija võitis! \n\tDiiler:" + diiler.summa() + "\n\tMängija: " + mangija.summa());
+                return 2;
             } else {
                 System.out.println("Viik!  \n\tDiiler:" + diiler.summa() + "\n\tMängija: " + mangija.summa());
+                return 1;
             }
     }
 
