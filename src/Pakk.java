@@ -38,6 +38,7 @@ public class Pakk {
 
     public Kaart jagaKaart(){
         // eemaldab pakist esimese kaardi
+        // kasutatud testimiseks kaardi jagamise simuleerimiseks
         return eemaldaKaart(0);
     }
 
