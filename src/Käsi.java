@@ -24,13 +24,12 @@ public class Käsi {
         int summa = 0;
         int ässad = 0;
         for(Kaart kaart: kaardid){
-            int[] vaartused = kaart.getVäärtused();
-            summa += vaartused[0];
+            summa += kaart.getVäärtused()[0];
             String suurus = kaart.getSuurus();
             if(suurus.equals("Ä"))
                 ässad += 1;
         }
-        if(summa < 12 && ässad/2 > 0)
+        if(summa < 12 && ässad > 0)
             summa += 10;
         return summa;
         }
