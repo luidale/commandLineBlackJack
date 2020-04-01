@@ -1,0 +1,53 @@
+*Autorite nimed;
+Hannes Luidalepp ja Joonas Jürgenstein
+
+*Projekti põhjalik kirjeldus, kus on kirjas programmi eesmärk ja selgitus programmi üldisest tööst, vajadusel lühike kasutusjuhis;
+Projekt seisneb kaardimängu BlackJack lihtsustatud versioonis.
+Tegemist on ühe populaarseima kasiino kaardimänguga, kus saab teha panuseid mängitakse diileri (maja) vastu.
+Mängu eesmärk on koguda võimalikult suur punktide arv, mis ei tohi ületada 21 punkti. Samal ajal peab olema ka suurem diileri punkti summast.
+Kaartide väärtused on :
+Äss - 1 või 11
+Piltkaart - 10
+Numbrikaart - vastavalt numbrile (nt. 2 - 2 punkti)
+BlackJacki kõige tavalisemad reeglid leiab siit: https://www.jokker.ee/artikkel/blackjack
+Praeguses versioonis meil panuseid teha ei saa. Lihtsustuse huvides on ära jäetud ka võimalus käe poolitamiseks või duubeldamiseks.
+
+*Iga klassi kohta eraldi selle eesmärk ja olulisemad meetodid;
+Klassid:
+Kaart
+	Kaardi eesmärk on esindada ühte mängu kaarti.
+	Tähtsaimad meetodid:
+		getSuurus() - tagastab kaardi suuruse (Äss, Kuningas, 1 jne.)
+		getVäärtus() - tagastab massiivi kaardi väärtustega 
+		avaKaart() - algselt on kaardipakis kõik kaardid tagurpidi. Enamus kaarte jagatakse siiski avatuna ning 
+					jagamise protsessi kasutatakse seda meetodit, et kaart ümber pöörata.
+					Diilerile jagatakse alguses ka üks kaart tagurpidi. Hiljem kasutatakse seda meetodit, selle kaardi ümber pööramiseks.		
+		toString() - tagastab kaardi info sõnena kujul Mast-Suurus (Nt. Po-7) ja kasutakse kaardi kuvamiseks.
+Pakk
+	Pakk esindab kaardipakki, mis koosneb kaartidest.
+	Pakis hoitakse kaarte (tunnus ArrayList<Kaart> kaardid) enne välja jagamist.
+	Tähtsaimad meetodid:
+		getKaardid() - tagastab kaardid, kasutakse testimisel, et kas kaardipakk on korralikult, loodud, segatud
+						ja kas kaart on kaardi jagamisel pakkist eemaldatud.
+		sega() - ajab pakis olevad kaardid juhuslikku järjekoda. Oluline tegevus peale kaardipaki loomist (kaardid on alguses järjekorras).
+		jagaKaart() - kasutatakse kaardi jagamisel. Eemalldab pakist esimese kaardi ja tagastab selle.
+		eemaldaKaart() - eemaldab kaardi antud positsioonilt. Kasutatakse pakki segamisel (sega()) ja kaardi jagamisel (jagaKaart()).
+Käsi
+	
+Mäng
+
+Peaklass
+
+*Projekti tegemise protsessi kirjeldus (erinevad etapid ja rühmaliikmete osalemine neis);
+	Hannes mõtles välja projekti ning enamvähem teostas klassid Kaart ja Pakk.
+	Joonas teostas klassi Käsi.
+
+*Iga rühmaliikme panus (sh tehtud klassid/meetodid) ja ajakulu (orienteeruvalt);
+
+*Tegemise mured (nt millistest teadmistest/oskustest tundsite projekti tegemisel puudust);
+	
+
+*Hinnang oma töö lõpptulemusele (millega saite hästi hakkama ja mis vajab arendamist);
+	Mäng BlackJack on oma kõikide reeglitega üsna nüansirikkas ning kõikide nende elluviimisega me vaeva ei näinud. Eesmärk oli saada tööle mängu funktsionaalsus, kus jagatakse kaardid, mängijalt küsitakse kas tahab kaarte juurde ning selgitatakse võitja (päris reeglitele vastavalt). Ja see tundub, et tuli välja hästi.
+
+*Selgitus ja/või näited, kuidas programmi osi eraldi ja programmi tervikuna testisite ehk kuidas veendusite, et programm töötab korrektselt.
