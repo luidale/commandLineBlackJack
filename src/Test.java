@@ -26,7 +26,7 @@ public class Test {
         //Summa leidmine
         System.out.println(kasi.summa());
 
-        Peaklass klass = new Peaklass(20);
+        Peaklass klass = new Peaklass();
 
 
 

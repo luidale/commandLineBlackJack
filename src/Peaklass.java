@@ -2,20 +2,10 @@ import java.util.Scanner;
 import java.util.List;
 
 public class Peaklass {
-    private double rahakott;
-
-
-    public Peaklass(double rahakott) {
-        this.rahakott = rahakott;
-    }
-
-    public double getRahakott() {
-        return rahakott;
-    }
-
     public static void main(String args[]) throws InterruptedException {
         System.out.println("BlackJack\n");
         double panus = 0.0;
+        double rahakott = 20;
         reeglid();
         Scanner scan = new Scanner(System.in);
         char vastus = 'n';
@@ -29,6 +19,11 @@ public class Peaklass {
                 System.out.println("Kasutaja ei soovinud mängu alustada ja mäng lõpetati.");
                 return;
             }
+            do {
+                System.out.println("Mis panuse peale soovid mangida");
+                panus = scan.nextDouble();
+            }
+            while(panus < 0.0 || panus > rahakott);
             Mäng mang = new Mäng();
             mang.jooksuta();
             }
