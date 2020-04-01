@@ -5,7 +5,27 @@ import java.util.concurrent.TimeUnit;
 public class Mäng {
 
 
-    public double jooksuta() throws InterruptedException {
+    public void jooksuta(Mängur mangur) throws InterruptedException {
+        double panus = 0.0;
+        Scanner scan = new Scanner(System.in);
+
+        do {
+            //System.out.println("Raha: " + rahakott);
+            if (panus > mangur.getRahakott()){
+                System.out.println("Eelnev panus oli suurem kui sul on raha. Vali uus panus!");
+            } else if (panus < 0.0){
+                System.out.println("Panus ei saa olla väiksem kui null. Vali uus panus!");
+            } else {
+                System.out.println("Mis panuse peale soovid mängida?");
+            }
+            panus = scan.nextDouble();
+
+        }
+        while(panus <= 0.0 || panus > mangur.getRahakott());
+
+        // Eemalda panus rahakotist
+        mangur.muudaRahakott(-panus);
+
         Käsi mangija = new Käsi();
         Käsi diiler = new Käsi();
         Pakk kaardipakk = new Pakk();
@@ -16,31 +36,32 @@ public class Mäng {
         if (mangija.summa()== 21){
             if(Arrays.asList("Ä","K","E","S","10").indexOf(diiler.getKaardid().get(1).getSuurus()) == -1) {
                 System.out.println("Mängija võitis BlackJack-iga, diileril ei olnud BlackJacki!");
-                return 2.5;
+                voit(panus, mangur,  2.5);
+                return;
             }
         }
 
         mängijaVoor(mangija,diiler,kaardipakk);
         if (mangija.summa() > 21){
             System.out.println("Mängija kaotas, kuna läks lõhki " + mangija.summa() + " punktiga!");
-            return 0;
+            return;
         }
-            diileriVoor(mangija,diiler,kaardipakk);
-            System.out.println("");
-            if (diiler.summa() > 21) {
-                System.out.println("Mängija võitis! Diiler läks lõhki " + diiler.summa() + " punktiga!");
-                return 2;
-            }
-            else if(diiler.summa() > mangija.summa()){
-                System.out.println("Diiler võitis! \n\tDiiler: " + diiler.summa() + "\n\tMängija: " + mangija.summa());
-                return 0;
-            } else if (diiler.summa() < mangija.summa()){
-                System.out.println("Mängija võitis! \n\tDiiler:" + diiler.summa() + "\n\tMängija: " + mangija.summa());
-                return 2;
-            } else {
-                System.out.println("Viik!  \n\tDiiler:" + diiler.summa() + "\n\tMängija: " + mangija.summa());
-                return 1;
-            }
+
+        diileriVoor(mangija,diiler,kaardipakk);
+        System.out.println("");
+        if (diiler.summa() > 21) {
+            System.out.println("Mängija võitis! Diiler läks lõhki " + diiler.summa() + " punktiga!");
+            voit(panus, mangur,  2);
+        } else if(diiler.summa() > mangija.summa()){
+            System.out.println("Diiler võitis! \n\tDiiler: " + diiler.summa() + "\n\tMängija: " + mangija.summa());
+        } else if (diiler.summa() < mangija.summa()){
+            System.out.println("Mängija võitis! \n\tDiiler:" + diiler.summa() + "\n\tMängija: " + mangija.summa());
+            voit(panus, mangur,  2);
+        } else {
+            System.out.println("Viik!  \n\tDiiler:" + diiler.summa() + "\n\tMängija: " + mangija.summa());
+            System.out.println("Said panuse tagasi.");
+            mangur.muudaRahakott(panus);
+        }
     }
 
     public static void kuvaLaud(Käsi diiler, Käsi mängija, String pealkiri) {
@@ -116,6 +137,12 @@ public class Mäng {
         return;
 
     }
+
+    public static void voit(double panus, Mängur mangur, double koefitsent){
+        System.out.println("Võitsid: " + panus*(koefitsent-1));
+        mangur.muudaRahakott(panus * koefitsent);
+    }
+
 
 
 }
