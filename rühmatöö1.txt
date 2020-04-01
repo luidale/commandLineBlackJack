@@ -33,7 +33,7 @@ Pakk
 		jagaKaart() - kasutatakse kaardi jagamisel. Eemalldab pakist esimese kaardi ja tagastab selle.
 		eemaldaKaart() - eemaldab kaardi antud positsioonilt. Kasutatakse pakki segamisel (sega()) ja kaardi jagamisel (jagaKaart()).
 Käsi
-     Käsi esindab neid kaarte, mis mängijal parasjagu käes on.
+     Käsi esindab neid kaarte, mis mängijal/diileril parasjagu käes/laual on.
      Tähtsaimad meetodid:
         getKaardid() - tagastab kaardid, mis mängijal käes on.
         lisaKaart() - lisab mängijale kaardi, samuti on seal boolean tüüpi parameeter, mis määrab ära,
@@ -43,8 +43,24 @@ Käsi
                   11, kui ülejäänud kaartide summa on väiksem 11-st.
 	
 Mäng
+	Esindab reaalset blackjacki mängu.
+	Tähtsaimad meetodid:
+		jooksuta() - kasutatakse mängu läbi viimiseks. Küsitakse panust, luuakse kaardipakk ning jagatske kaarte ja vaadatakse, kas keegi juba on võitnud või mitte.
+		kuvaLaud() - kuvatakse mängulaud (kaardid, mis käes ning toimuva toimingu nime).
+		kaartideJagamine() - sellega viiakse läbi esialgset kaartide jagamist(diilerile ja mängijale 2 kaarti).
+		mängijaVoor() - viib läbi mängu osa, kus mängija saab kaarte juurde võtta.
+		diileriVoor() - viib läbi mängu osa, kus diiler saab kaarte juurde võtta.
+
+Mängur
+	Kujutab blackJacki mängijat. Haldab rahakotti, millest tehakse panuseid ja kuhu pannakse võidud.
+	Tähtsamad meetodid:
+		muudaRahakott() - eemaldab või paneb raha juurde, kasutatakse panuste võtmiseks ja võitude lisamiseks.
+		getRahakott() - kasutatakse rahakoti seisu teadasaamiseks
 
 Peaklass
+	Peaklassis kutsutakse programm ellu ning küsitakse alguses ja peale igat blackjaki mängu, kas ta tahab jätkata.
+	Tähtsamad meetodid:
+		reeglid() - kuvatakse programmi alguses reeglid.
 
 *Projekti tegemise protsessi kirjeldus (erinevad etapid ja rühmaliikmete osalemine neis);
 	Hannes mõtles välja projekti ning enamvähem teostas klassid Kaart ja Pakk.
