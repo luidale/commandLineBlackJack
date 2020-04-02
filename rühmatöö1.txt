@@ -5,12 +5,14 @@ Hannes Luidalepp ja Joonas Jürgenstein
 Projekt seisneb kaardimängu BlackJack lihtsustatud versioonis.
 Tegemist on ühe populaarseima kasiino kaardimänguga, kus saab teha panuseid mängitakse diileri (maja) vastu.
 Mängu eesmärk on koguda võimalikult suur punktide arv, mis ei tohi ületada 21 punkti. Samal ajal peab olema ka suurem diileri punkti summast.
+Diilet võtab juurde kui summa on väiksem kui 17.
 Kaartide väärtused on :
 Äss - 1 või 11
 Piltkaart - 10
 Numbrikaart - vastavalt numbrile (nt. 2 - 2 punkti)
 BlackJacki kõige tavalisemad reeglid leiab siit: https://www.jokker.ee/artikkel/blackjack
-Praeguses versioonis meil panuseid teha ei saa. Lihtsustuse huvides on ära jäetud ka võimalus käe poolitamiseks või duubeldamiseks.
+Lihtsustuse huvides on ära jäetud ka võimalus käe poolitamiseks või duubeldamiseks.
+Mängijal on alguses 20 raha.
 
 *Iga klassi kohta eraldi selle eesmärk ja olulisemad meetodid;
 Klassid:
@@ -43,7 +45,7 @@ Käsi
                  11, kui ülejäänud kaartide summa on väiksem 11-st.
 	
 Mäng
-	Esindab reaalset blackjacki mängu.
+	Esindab reaalset blackjacki mängu (mäng on üks panus ja kaartide jagamine).
 	Tähtsaimad meetodid:
 		jooksuta() - kasutatakse mängu läbi viimiseks. Küsitakse panust, luuakse kaardipakk ning jagatske kaarte ja vaadatakse, kas keegi juba on võitnud või mitte.
 		kuvaLaud() - kuvatakse mängulaud (kaardid, mis käes ning toimuva toimingu nime).
@@ -55,10 +57,10 @@ Mängur
 	Kujutab blackJacki mängijat. Haldab rahakotti, millest tehakse panuseid ja kuhu pannakse võidud.
 	Tähtsamad meetodid:
 		muudaRahakott() - eemaldab või paneb raha juurde, kasutatakse panuste võtmiseks ja võitude lisamiseks.
-		getRahakott() - kasutatakse rahakoti seisu teadasaamiseks
+		getRahakott() - kasutatakse rahakoti seisu teada saamiseks.
 
 Peaklass
-	Peaklassis kutsutakse programm ellu ning küsitakse alguses ja peale igat blackjaki mängu, kas ta tahab jätkata.
+	Peaklassis kutsutakse programm ellu ning küsitakse alguses ja peale igat blackjaki mängu, küsitakse kas ta tahab jätkata.
 	Tähtsamad meetodid:
 		reeglid() - kuvatakse programmi alguses reeglid.
 
@@ -67,7 +69,7 @@ Peaklass
 	Joonas teostas klassi Käsi.
 
 *Iga rühmaliikme panus (sh tehtud klassid/meetodid) ja ajakulu (orienteeruvalt);
-    Hannes mõtles välja projekti ja koostas klassid Kaart, Pakk, BlackJack, Mängur.
+    Hannes mõtles välja projekti ja koostas klassid Kaart, Pakk, BlackJack (see on praegu kasutuseta, kuid ajaloo huvides säilitatud, selle alusel tehti ning arendati edasi klassid Mäng ja Peaklass), Mängur.
     Joonas koostas klassid Käsi.
     Klassid Mäng ja Peaklass teostati koos.
 
@@ -75,6 +77,7 @@ Peaklass
     Joonas - programmeerimise poole pealt tundsin puudust ehk veidi erinevate tsüklite koostamise oskusest,
     kuna Pythonis on see veidi lihtsam, aga Javas pisut nüansirohkem ja keerulisem. Samuti kuna ma pole varem
     BlackJacki mänginud, siis arusaamine, kuidas mäng toimib (nt miks "Ä" on kaks väärtust) võttis veidi aega.
+	Hannes - Mina tundsin puudust sellest, et kohati on objekt orienteeritult raske mõelda, kuna varem olen ainult mitte-objektorienteeritult asju teinud. Klassid Kaart, Pakk, Käsi ja Mängur on lihtne mõista. Pean silmas, et klass Mäng näeb liiga mitte-objekt orienteeritud välja. Mul on tunne, et selle klassi sisu (ehk mängu enda loogika protsess) peaks ehk rohkem erinevatest klassidest koosnema. Või siis rohkem erinevatesse meetoditesse pandud olema. Vähemalt korduvad tegevused on proovitud mõistlikuse piires meetoditesse panna.
 
 *Hinnang oma töö lõpptulemusele (millega saite hästi hakkama ja mis vajab arendamist);
 	Mäng BlackJack on oma kõikide reeglitega üsna nüansirikkas ning kõikide nende elluviimisega me vaeva ei näinud. Eesmärk oli saada tööle mängu funktsionaalsus, kus jagatakse kaardid, mängijalt küsitakse kas tahab kaarte juurde ning selgitatakse võitja (päris reeglitele vastavalt). Ja see tundub, et tuli välja hästi.
@@ -84,3 +87,4 @@ Peaklass
     pidi kaardipakis kaardid suvalisse järjekorda segama ning klassi Käsi meetod summa() pidi kaartide väärtused kokku
     liitma, aga pidi ka arvestama seda, et "Ä" on kaks väärtust ehk pidime kontrollima, et summa() tagastaks õige väärtuse
     ka "Ä" korral.
+	Klass mängu funktsioneerimist sai testitud reaalselt mängides ning jälgitud, et vigu oleks.
