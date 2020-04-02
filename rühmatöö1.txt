@@ -33,14 +33,14 @@ Pakk
 		jagaKaart() - kasutatakse kaardi jagamisel. Eemalldab pakist esimese kaardi ja tagastab selle.
 		eemaldaKaart() - eemaldab kaardi antud positsioonilt. Kasutatakse pakki segamisel (sega()) ja kaardi jagamisel (jagaKaart()).
 Käsi
-     Käsi esindab neid kaarte, mis mängijal/diileril parasjagu käes/laual on.
-     Tähtsaimad meetodid:
-        getKaardid() - tagastab kaardid, mis mängijal käes on.
-        lisaKaart() - lisab mängijale kaardi, samuti on seal boolean tüüpi parameeter, mis määrab ära,
-                      kas kaart on nähtav või mitte.
-        summa() - tagastab kaartide summa vastavalt iga kaardi väärtusele, aga kuna "Ä" on kaks väärtust, siis
-                  tagastab 1 vastavalt siis, kui ülejäänud kaartide summa on suurem 11 ja tagastab Ä väärtuseks
-                  11, kui ülejäänud kaartide summa on väiksem 11-st.
+    Käsi esindab neid kaarte, mis mängijal/diileril parasjagu käes/laual on.
+    Tähtsaimad meetodid:
+       getKaardid() - tagastab kaardid, mis mängijal käes on.
+       lisaKaart() - lisab mängijale kaardi, samuti on seal boolean tüüpi parameeter, mis määrab ära,
+                     kas kaart on nähtav või mitte.
+       summa() - tagastab kaartide summa vastavalt iga kaardi väärtusele, aga kuna "Ä" on kaks väärtust, siis
+                 tagastab 1 vastavalt siis, kui ülejäänud kaartide summa on suurem 11 ja tagastab Ä väärtuseks
+                 11, kui ülejäänud kaartide summa on väiksem 11-st.
 	
 Mäng
 	Esindab reaalset blackjacki mängu.
@@ -67,11 +67,20 @@ Peaklass
 	Joonas teostas klassi Käsi.
 
 *Iga rühmaliikme panus (sh tehtud klassid/meetodid) ja ajakulu (orienteeruvalt);
+    Hannes mõtles välja projekti ja koostas klassid Kaart, Pakk, BlackJack, Mängur.
+    Joonas koostas klassid Käsi.
+    Klassid Mäng ja Peaklass teostati koos.
 
 *Tegemise mured (nt millistest teadmistest/oskustest tundsite projekti tegemisel puudust);
-	
+    Joonas - programmeerimise poole pealt tundsin puudust ehk veidi erinevate tsüklite koostamise oskusest,
+    kuna Pythonis on see veidi lihtsam, aga Javas pisut nüansirohkem ja keerulisem. Samuti kuna ma pole varem
+    BlackJacki mänginud, siis arusaamine, kuidas mäng toimib (nt miks "Ä" on kaks väärtust) võttis veidi aega.
 
 *Hinnang oma töö lõpptulemusele (millega saite hästi hakkama ja mis vajab arendamist);
 	Mäng BlackJack on oma kõikide reeglitega üsna nüansirikkas ning kõikide nende elluviimisega me vaeva ei näinud. Eesmärk oli saada tööle mängu funktsionaalsus, kus jagatakse kaardid, mängijalt küsitakse kas tahab kaarte juurde ning selgitatakse võitja (päris reeglitele vastavalt). Ja see tundub, et tuli välja hästi.
 
 *Selgitus ja/või näited, kuidas programmi osi eraldi ja programmi tervikuna testisite ehk kuidas veendusite, et programm töötab korrektselt.
+    Näiteks klassis test kontrollisime, kas meetodid sega() ja summa() töötab korrektselt, ehk klassi Pakk meetod sega()
+    pidi kaardipakis kaardid suvalisse järjekorda segama ning klassi Käsi meetod summa() pidi kaartide väärtused kokku
+    liitma, aga pidi ka arvestama seda, et "Ä" on kaks väärtust ehk pidime kontrollima, et summa() tagastaks õige väärtuse
+    ka "Ä" korral.
